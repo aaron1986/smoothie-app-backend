@@ -1,18 +1,9 @@
 const express = require("express");
-const db = require("../config/db"); // Ensure the correct database file is imported
+const smoothieRouter = require("./smoothie-router");
 
-const router = express.Router();
+const apiRouter = express.Router();
 
-router.get("/smoothies", async (req, res, next) => {
-  try {
-    const result = await db.query("SELECT * FROM smoothies"); // Check if the table exists
-    res.json(result.rows);
-  } catch (err) {
-    console.error("🔥 ERROR:", err); // Log the error for debugging
-    next(err); // Pass error to Express handler
-  }
-});
+// Mount smoothie routes
+apiRouter.use("/smoothies", smoothieRouter);
 
-  
-
-module.exports = router;
+module.exports = apiRouter;

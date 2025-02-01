@@ -1,12 +1,12 @@
 const { Pool } = require("pg");
-require("dotenv").config();
 
-// Create a connection pool
+// ✅ Database connection setup
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false, 
-  },
+  user: "root",
+  host: "localhost",
+  database: "smoothie_db",
+  password: "pinkBALLS12",
+  port: 5432,
 });
 
 module.exports = pool;
